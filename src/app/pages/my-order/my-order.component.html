@@ -1,0 +1,47 @@
+<div class="row mt-4">
+    <div class="col-md-3 mb-4" *ngFor="let product of products">
+        <div class="card">
+            <img class="card-img-top" [src]="product?.productImageUrl" alt="Brand Logo" />
+            <div class="card-body">
+                <h4 class="card-title product_title">{{ product?.productName }}</h4>
+                <p class="card-text product_description">
+                    {{ product?.productDetails }}
+                </p>
+                <span class="product_price">
+                    <mat-icon class="price_icon_tag" matSuffix>sell</mat-icon>
+                    {{ product?.productPrice }}
+                </span>
+                <span class="available_product_label">Available <b>{{ product?.quantity }}</b></span>
+                
+                <form #rating="ngForm" (ngSubmit)="formSubmit(rating, product.productID)">
+                    <div class="row mb-2 mt-2">
+                        <div class="col-md-8">
+                            <select ngModel class="form-control" name="rate">
+                                <option *ngFor="let item of ratingList" [value]="item">{{item}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <button (click)="onRate(product.productID)" mat-flat-button color="primary"
+                                aria-label="Example icon button with a home icon">
+                                Rate
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    
+                    <div class="col d-flex justify-content-center">
+                        <button  (click)="onOrderCancel(product.productID, product.cartID)" mat-flat-button
+                            color="primary" aria-label="Example icon button with a home icon">
+                            Cancel Order
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<mat-paginator [length]="allRecordsCount" [pageSize]="pageSize" aria-label="Select page "
+    (page)="pageEvent = onPageChange($event)">
+</mat-paginator>

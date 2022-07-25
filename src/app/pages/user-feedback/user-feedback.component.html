@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <form #feedback="ngForm" (ngSubmit)="formSubmit(feedback)">
+        <mat-form-field class="example-full-width w-100" appearance="outline">
+            <mat-label>Feedback</mat-label>
+            <textarea matInput ngModel placeholder="Write your feedback.." name="feedback"></textarea>
+        </mat-form-field>
+            <div class="d-flex flex-row align-items-center justify-content-between ">
+                <button type="submit" mat-stroked-button color="primary">Send Feedback</button>
+            </div>
+        </form>
+    </div>
+</div>

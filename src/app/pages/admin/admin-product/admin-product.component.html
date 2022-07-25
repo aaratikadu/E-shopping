@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-md-8">
+        <form #product="ngForm" (ngSubmit)="formSubmit(product)">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Product Name</mat-label>
+                <input matInput placeholder="Enter Product Name" ngModel required name="productName" type="text">
+            </mat-form-field>
+        
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label> Product Description</mat-label>
+                <input matInput ngModel placeholder=" Product Description" required name="description" type="text">
+            </mat-form-field>
+        
+            <div class="row">
+                <div class="col">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Product Type</mat-label>
+                        <input matInput ngModel placeholder="Product Type" required name="productType" type="text">
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Company </mat-label>
+                        <input matInput ngModel placeholder="Company Name " required name="company" type="text">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Product Price</mat-label>
+                        <input matInput ngModel placeholder="Product Price " required name="productPrice" type="number">
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Quantity</mat-label>
+                        <input matInput ngModel placeholder="Quantity" required name="quantity" type="number">
+                    </mat-form-field>
+                </div>
+            </div>
+            
+            <div class="d-flex flex-row align-items-center justify-content-between mt-3">
+                <button (click)="addProduct()" mat-stroked-button color="primary">Add Product</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4">
+        <div class="image__preview__container">
+            <img class="image__preview"  [src]="fileName"/>
+            
+        </div>
+        <div class="mt-2">
+            <input #fileInput  hidden  (change)="onFileChange($event)" type="file" accept="image/png, image/jpeg" />
+            <button (click)="fileInput.click()" mat-stroked-button color="primary">Upload Image</button>
+            <!-- <button (click)="uploadImage()"  mat-stroked-button color="primary">Upload Image</button> -->
+        </div>
+    </div>
+</div>

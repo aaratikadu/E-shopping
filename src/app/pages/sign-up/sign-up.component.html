@@ -1,0 +1,57 @@
+<div class="full__height">
+    <div class="d-flex flex-row align-items-center justiy-content-center"
+        style="height:100%;width:100%">
+        <div class="card col-md-4 offset-md-4 col-sm-8 offset-sm-2">
+            <div class="card-body">
+                <div class="d-flex flex-column align-items-center justiy-content-center mb-3">
+                    <h4 class="card-title custom_heading">Retail Product Management</h4>
+                    <p class="card-text custom_heading">Registration</p>
+                </div>
+                <form #register="ngForm" (ngSubmit)="formSubmit(register)" >
+
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>User Name</mat-label>
+                            <input matInput placeholder="Enter User Name" ngModel required name="userName" type="text">
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Password</mat-label>
+                            <input matInput ngModel placeholder="Password" required name="password" type="password">
+                            <mat-icon matSuffix>password</mat-icon>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Confirm Password</mat-label>
+                            <input matInput ngModel placeholder="Confirm Password" required name="configPassword" type="password">
+                            <mat-icon matSuffix>password</mat-icon>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="w-100" *ngIf="isAdminRole">
+                            <mat-label>Master Password</mat-label>
+                            <input matInput ngModel placeholder="Master Password" required name="masterPassword" type="password">
+                            <mat-icon matSuffix>key</mat-icon>
+                        </mat-form-field>
+
+                        <mat-radio-group aria-label="Role"  name="role" ngModel class="w-100">
+                            <div class="row">
+                                <div class="col">
+                                    <mat-radio-button value="admin" (change)="onCheckChange(true)">Admin</mat-radio-button>
+                                </div>
+                                <div class="col">
+                                    <mat-radio-button  value="customer" (change)="onCheckChange(false)">Customer</mat-radio-button>
+                                </div>
+                            </div>
+                        </mat-radio-group>
+
+                    
+                    <div class="d-flex flex-row align-items-center justify-content-between mt-3">
+                        <button (click)="sign()" mat-stroked-button color="primary">Sign In</button>
+                        <button type="submit" mat-flat-button color="primary">Sign Up</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+</div>

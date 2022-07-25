@@ -1,0 +1,33 @@
+<div class="row mt-4">
+    <div class="col-md-2 mb-4" *ngFor="let product of products">
+        <div class="card">
+            <img class="card-img-top" [src]="product?.productImageUrl" alt="Brand Logo" />
+            <div class="card-body">
+                <h4 class="card-title product_title">{{ product?.productName }}</h4>
+                <p class="card-text product_description">
+                    {{ product?.productDetails }}
+                </p>
+                <span class="product_rating">
+                    <mat-icon class="rating_icon_tag" *ngFor="let item of [1, 2, 3, 4]" matSuffix>star</mat-icon>
+                    <mat-icon class="rating_icon_tag" matSuffix>star_half</mat-icon> 4.5
+                </span>
+                <span class="product_price">
+                    <mat-icon class="price_icon_tag" matSuffix>sell</mat-icon>
+                    {{ product?.productPrice }}
+                </span>
+                <span class="available_product_label">Available <b>{{ product?.quantity }}</b></span>
+                <div class="row">
+                    <div class="col d-flex justify-content-center ">
+                        <button (click)="onProductRestore(product.productID)" mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+                            <mat-icon>unarchive</mat-icon>
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<mat-paginator [length]="allRecordsCount" [pageSize]="pageSize" aria-label="Select page "
+    (page)="pageEvent = onPageChange($event)">
+</mat-paginator>

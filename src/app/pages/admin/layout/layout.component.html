@@ -1,0 +1,30 @@
+<mat-sidenav-container>
+    <mat-sidenav #sidenav>
+        <mat-toolbar color="primary">
+            <h1 class="md-toolbar-tools">Menu</h1>
+        </mat-toolbar>
+        <mat-nav-list>
+            <a *ngFor="let route of routes" mat-list-item [routerLink]="route.path" (click)="sidenav.toggle()"
+                class="nav_width">
+                <mat-icon class="custom_route_icon">{{route.icon}}</mat-icon>  {{route.label}}</a>
+
+                <a  mat-list-item  (click)="logout()"
+                class="nav_width">
+                <mat-icon class="custom_route_icon">logout</mat-icon> Logout </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <button mat-icon-button aria-label="Menu" (click)="sidenav.open()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span class="custom_heading"> Retail Product Management </span>
+        </mat-toolbar>
+        <main class="custom_screen_height">
+            <div class="container mt-4">
+                <router-outlet></router-outlet>
+            </div>
+        </main>
+
+    </mat-sidenav-content>
+</mat-sidenav-container>

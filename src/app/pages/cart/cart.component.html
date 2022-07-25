@@ -1,0 +1,37 @@
+<div class="row mt-4">
+    <div class="col-md-2 mb-4" *ngFor="let product of products">
+        <div class="card">
+            <img class="card-img-top" [src]="product?.productImageUrl" alt="Brand Logo" />
+            <div class="card-body">
+                <h4 class="card-title product_title">{{ product?.productName }}</h4>
+                <p class="card-text product_description">
+                    {{ product?.productDetails }}
+                </p>
+                <span class="product_price">
+                    <mat-icon class="price_icon_tag" matSuffix>sell</mat-icon>
+                    {{ product?.productPrice }}
+                </span>
+                <span class="available_product_label">Available <b>{{ product?.quantity }}</b></span>
+                <div class="row">
+                    <div class="col d-flex justify-content-center">
+                        <button  onMoveToTrash
+                            (click)="onOrderPlace(product.productID, product.cartID)"
+                            mat-flat-button color="primary" aria-label="Example icon button with a home icon">
+                            Buy
+                        </button>
+                    </div>
+                    <div class="col d-flex justify-content-center">
+                        <button  mat-icon-button color="primary"
+                        (click)="onRemove(product.cartID)"
+                            aria-label="Add to wishlist">
+                            <mat-icon>playlist_remove</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<mat-paginator [length]="allRecordsCount" [pageSize]="pageSize" aria-label="Select page "
+    (page)="pageEvent = onPageChange($event)">
+</mat-paginator>

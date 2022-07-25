@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col">
+        <table mat-table [dataSource]="feedbackList" class="mat-elevation-z8 w-100 mb-3">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="feedbackID">
+                <th mat-header-cell *matHeaderCellDef> Feedback Id</th>
+                <td mat-cell *matCellDef="let element"> {{element.feedbackID || '-'}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="userName">
+                <th mat-header-cell *matHeaderCellDef> Feedback User </th>
+                <td mat-cell *matCellDef="let element"> {{element.userName || '-'}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="feedBack">
+                <th mat-header-cell *matHeaderCellDef> Feedback </th>
+                <td mat-cell *matCellDef="let element"> {{element.feedBack || '-'}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="delete">
+                <th mat-header-cell *matHeaderCellDef> Delete </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button (click)="onDelete(element.feedbackID)" color="primary" aria-label="Example icon button with a home icon">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [length]="allRecordsCount" [pageSize]="pageSize" aria-label="Select page "
+            (page)="pageEvent = onPageChange($event)">
+        </mat-paginator>
+    </div>
+</div>
